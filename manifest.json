@@ -3,7 +3,6 @@
   "name": "Pokemon Center Helper",
   "version": "1.0",
   "description": "Displays your position and estimated wait time in the queue and auto refresh every hour.",
-  "permissions": ["scripting"],
   "host_permissions": [
 "https://www.pokemoncenter.com/*",
 "https://www.pokemoncenter.com/_Incapsula_Resource?SWWRGTS=868"
@@ -17,7 +16,7 @@
   "content_scripts": [
     {
 "matches": ["https://www.pokemoncenter.com/*"],
-      "js": ["queue_helper.min.js", "auto_refresh.min.js"],
+      "js": ["queue_helper.js", "auto_refresh.js"],
       "run_at": "document_idle"
     }
   ]

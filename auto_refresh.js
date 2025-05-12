@@ -25,7 +25,7 @@
     button.style.border = 'none';
     button.style.cursor = 'pointer';
     button.style.zIndex = '9999';
-	button.style.borderRadius = 'border-radius: 10px 0px 0px 10px';;
+	button.style.borderRadius = '10px 0px 0px 10px';;
 
     button.addEventListener('click', () => {
         toggleTimer();
