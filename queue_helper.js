@@ -6,6 +6,11 @@ function updatePosition(pos, ttw) {
   positionElement.textContent = `Position in line: ${pos}${waitTimeText}`;
 }
 
+function showQueueError() {
+  positionElement.textContent =
+    "There was an error loading the queue. It'll automatically try again.";
+}
+
 function callAPI() {
   fetch("https://www.pokemoncenter.com/_Incapsula_Resource?SWWRGTS=868")
     .then((response) => response.json())
@@ -13,48 +18,31 @@ function callAPI() {
       if (data && data.pos) {
         updatePosition(data.pos, data.ttw);
       } else {
-        updatePosition("Unknown", "N/A");
+        showQueueError();
       }
     })
     .catch((error) => {
       console.log("Error calling API:", error);
-      updatePosition("N/A", "N/A");
-      clearInterval(interval);
+      showQueueError();
     });
 }
 
 function hasIframeInBody() {
-  const iframes = document.body.getElementsByTagName("iframe");
-  for (const iframe of iframes) {
-    if (iframe.title === "DataDome CAPTCHA") {
-      return false;
-    }
-  }
-
-  return false;
+  return (
+    document.body && document.body.querySelector("iframe#main-iframe") !== null
+  );
 }
 
 function addDiv() {
-  positionElement.id = "pokemon-center-queue-helper";
-  positionElement.style.position = "fixed";
-  positionElement.style.top = "50%";
-  positionElement.style.left = "50%";
-  positionElement.style.transform = "translate(-50%, -50%)";
-  positionElement.style.backgroundColor = "white";
-  positionElement.style.color = "#000";
-  positionElement.style.padding = "10px 20px";
-  positionElement.style.fontSize = "22px";
-  positionElement.style.fontWeight = "bold";
-  positionElement.style.zIndex = "9999";
-  positionElement.style.borderRadius = "10px";
-  positionElement.style.border = "2px solid #000";
-  positionElement.style.boxShadow = "5px 5px 10px #000";
+  positionElement.id = "sv-pokemon-center-queue-helper";
+  positionElement.textContent = "Loading queue...";
   document.body.appendChild(positionElement);
 }
 
 let interval;
 if (hasIframeInBody()) {
   addDiv();
+  turnTimerOff();
   callAPI(); // Initial call
-  interval = setInterval(callAPI, 60000); // Repeat every minute
+  interval = setInterval(callAPI, 30000); // Repeat every 30 seconds
 }
