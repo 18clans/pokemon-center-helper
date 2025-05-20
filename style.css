@@ -1,0 +1,85 @@
+#sv-refresh-toggle-button {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  margin-top: 10%;
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 9999;
+  border-radius: 10px 0px 0px 10px;
+  background-size: 200% auto;
+  -webkit-animation: gradient_move 3s ease infinite;
+  animation: gradient_move 3s ease infinite;
+  font-size: 17px;
+  font-weight: bold;
+  background: -webkit-linear-gradient(
+      225deg,
+      rgb(34, 163, 83),
+      rgb(182, 221, 74),
+      rgb(7, 101, 29)
+    )
+    0% 0% / 300% 300%;
+  box-shadow: 0px 4px 14px #000;
+}
+
+/* button off */
+.sv-button-toggle {
+  background: -webkit-linear-gradient(
+      225deg,
+      rgb(255 255 255),
+      rgb(53 138 100),
+      rgb(95 113 103)
+    )
+    0% 0% / 300% 300% !important;
+}
+
+#sv-pokemon-center-queue-helper {
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  box-shadow: 0px 6px 14px #000;
+  background: -webkit-linear-gradient(
+      225deg,
+      rgb(232, 255, 138),
+      rgb(250, 138, 2),
+      rgb(251, 255, 0)
+    )
+    0% 0% / 300% 300%;
+  -webkit-animation: gradient_move 3s ease infinite;
+  animation: gradient_move 3s ease infinite;
+  color: rgb(26 26 26);
+  padding: 10px 20px;
+  font-size: 22px;
+  font-weight: bold;
+  z-index: 9999;
+  border-radius: 10px;
+  border: 2px solid rgb(0, 0, 0);
+  box-shadow: rgb(0, 0, 0) 5px 5px 10px;
+}
+
+@-webkit-keyframes gradient_move {
+  0% {
+    background-position: 0% 92%;
+  }
+  50% {
+    background-position: 100% 9%;
+  }
+  100% {
+    background-position: 0% 92%;
+  }
+}
+
+@keyframes gradient_move {
+  0% {
+    background-position: 0% 92%;
+  }
+  50% {
+    background-position: 100% 9%;
+  }
+  100% {
+    background-position: 0% 92%;
+  }
+}
